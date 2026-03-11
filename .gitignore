@@ -1,0 +1,7 @@
+.idea/
+
+.env
+.DS_Store
+.sisyphus/
+node_modules/
+.openclaw/

@@ -1,0 +1,32 @@
+{
+  "name": "quickclaw",
+  "version": "1.0.0",
+  "description": "QuickClaw: AI Agent 极速部署与 Docker 沙箱环境管理工具",
+  "type": "module",
+  "main": "bin/openclaw-setup.js",
+  "bin": {
+    "openclaw-setup": "bin/openclaw-setup.js"
+  },
+  "scripts": {
+    "setup": "node bin/openclaw-setup.js start",
+    "restart": "docker compose restart",
+    "stop": "docker compose stop"
+  },
+  "keywords": [
+    "ai-agent",
+    "docker",
+    "sandbox",
+    "orchestration",
+    "deployment"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@inquirer/prompts": "^7.10.1",
+    "chalk": "^5.6.2",
+    "commander": "^14.0.3",
+    "dotenv": "^17.3.1",
+    "execa": "^9.6.1",
+    "ora": "^9.3.0"
+  }
+}
