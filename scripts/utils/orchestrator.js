@@ -1,5 +1,4 @@
 import chalk from 'chalk';
-import ora from 'ora';
 import { registry } from './registry.js';
 
 class Orchestrator {

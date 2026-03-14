@@ -104,15 +104,15 @@ export default {
       }
     }
 
-    const spinner = ora('正在准备 OpenClaw 镜像...').start();
+    console.log(chalk.cyan('正在拉取/准备 OpenClaw 镜像...'));
     try {
-      // 总是尝试拉取镜像以确保版本正确（特别是 latest 标签）
-      await runCompose(composeCmd, ['pull']);
-      spinner.text = '正在启动 OpenClaw 容器...';
+      await runCompose(composeCmd, ['pull'], { stdio: 'inherit' });
+      
+      const upSpinner = ora('正在启动 OpenClaw 容器...').start();
       await runCompose(composeCmd, ['up', '-d']);
-      spinner.succeed(chalk.green('容器启动指令已发送。'));
+      upSpinner.succeed(chalk.green('容器启动指令已发送。'));
     } catch (error) {
-      spinner.fail(chalk.red(`启动容器失败: ${error.message}`));
+      console.error(chalk.red(`启动容器失败: ${error.message}`));
       throw error;
     }
 
