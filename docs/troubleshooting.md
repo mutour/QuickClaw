@@ -26,3 +26,13 @@ OpenClaw 默认将 Web 服务绑定到 `127.0.0.1`（本地回环地址）。在
 
 如果提示需要配对:
 docker-compose exec openclaw-gateway openclaw devices list --token your_random_gateway_token_here
+
+
+访问受限: origin not allowed (open the Control UI from the gateway host or allow it in gateway.controlUi.allowedOrigins)
+[不推荐] docker compose exec openclaw-gateway node dist/index.js config set gateway.controlUi.allowedOrigins '["http://localhost:18789", "http://127.0.0.1:18789", "http://192.168.1.42:18789"]'
+
+fix: control ui requires device identity (use HTTPS or localhost secure context)
+[不推荐] docker compose exec openclaw-gateway node dist/index.js config set gateway.controlUi.allowInsecureAuth true
+
+局域网访问考虑以下方式,使用 SSH 隧道, 这样就可以使用127.0.0.118789访问192.168.1.42机器上部署的openclaw
+ssh -L 18789:127.0.0.1:18789 你的用户名@192.168.1.42
